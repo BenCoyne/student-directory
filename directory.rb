@@ -1,18 +1,24 @@
-# First we make an array full of our villainous students
-students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november},
-  {name: "Darth Vader", cohort: :november},
-  {name: "Nurse Ratched", cohort: :november},
-  {name: "Michael Corleone", cohort: :november},
-  {name: "Alex DeLarge", cohort: :november},
-  {name: "The Wicked Witch of the West", cohort: :november},
-  {name: "Terminator", cohort: :november},
-  {name: "Freddy Krueger", cohort: :november},
-  {name: "The Joker", cohort: :november},
-  {name: "Joffrey Baratheon", cohort: :november},
-  {name: "Norman Bates", cohort: :november}]
+# We first create some methods to help take and display:
 
-# We then create a few methods to help display our data
+def insert_student
+  # Prompt the user for the name of the student they wish to add.
+  puts "Enter Student's name: "
+  puts "To finish, just hit return twice."
+  # Create an empty array.
+  students = []
+  # Get the first name.
+  name = gets.chomp
+  # While the name is not empty, repeat this code.
+  while !name.empty? do
+    students << {name: name, cohort: :november}
+    puts "Now we have #{students.count} students"
+    # Get another name from the user.
+    name = gets.chomp
+  end
+  # return the students array.
+  students
+end
+
 def print_header
   puts "The Students of Villains Academy"
   puts "-------------"
@@ -28,8 +34,8 @@ def print_footer(students)
   puts "Overall, we have #{students.count} great students"
 end
 
-# Nothing happens until we call out methods
-
+# Nothing happens until we call out methods.
+students = insert_student
 print_header
 print(students)
 print_footer(students)
