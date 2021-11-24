@@ -1,4 +1,4 @@
-# first we print the list of students
+# First we make an array full of our villainous students
 students = [
 "Dr. Hannibal Lecter",
 "Darth Vader",
@@ -11,9 +11,23 @@ students = [
 "The Joker",
 "Joffrey Baratheon",
 "Norman Bates"]
-# and then print them 
-puts "The students of Villains Academy"
-puts "-------------"
-students.each { |student| puts student }
-# finally, we print the totla number of students
-puts "Overall, we have #{students.count} great students"
+
+# We then create a few methods to help display our data
+def print_header
+  puts "The Students of Villains Academy"
+  puts "-------------"
+end
+
+def print(names)
+  names.each { |name| puts name }
+end
+
+def print_footer(names)
+  puts "Overall, we have #{names.count} great students"
+end
+
+# Nothing happens until we call out methods
+
+print_header
+print(students)
+print_footer(students)
