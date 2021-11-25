@@ -66,6 +66,7 @@ def print_footer
   puts "Overall, we have #{@students.count} great students."
 end
 
+<<<<<<< HEAD
 def save_students
   #open the file for writing
   file = File.open("students.csv", "w")
@@ -78,6 +79,5 @@ def save_students
   file.close
 end
 
-# Nothing happens until we call out methods.
-
 interactive_menu
+
