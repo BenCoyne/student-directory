@@ -63,6 +63,4 @@ def print_footer
   puts "Overall, we have #{@students.count} great students."
 end
 
-# Nothing happens until we call out methods.
-
 interactive_menu
