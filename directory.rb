@@ -5,21 +5,31 @@ puts "Welcome to the Villains Academy Student Database".center(100)
 puts "  ------------------------------------------------\n\n".center(100)
 
 def insert_student
-  puts "Enter the name of the student: "
-  puts "To finish, just hit return twice."
+  puts "Enter the name of the students"
+  puts "To finish, hit return twice"
   print ">> "
-  # Get the first name.
-  name = STDIN.gets.chomp
-  # While the name is not empty, repeat this code.
-  while !name.empty? do
-    # add the student hash to the @students array.
-    @students << {name: name, cohort: :november}
-    puts "Now we have #{@students.count} students"
-    # Get another name from the user.
-    puts "Enter Student's name or hit return to finish: "
+  @name = STDIN.gets.chomp
+  while !@name.empty?  do
+    puts "Enter student's age:"
+    @age = STDIN.gets.chomp.to_i
+    puts "Enter student's location:"
+    @location = STDIN.gets.chomp
+	puts "Enter cohort:"
+    @cohort = STDIN.gets.chomp
+	if @cohort == ""
+		@cohort = :December
+	end
+	add_student
+    puts "We now have #{@students.count} students."
+    puts "Input the name of another student or hit Enter to finish "
     print ">> "
-    name = STDIN.gets.chomp
-  end
+    @name = STDIN.gets.chomp
+  end  
+  @students
+end
+
+def add_student
+  @students << {name: @name, cohort: @cohort, age: @age, location: @location}
 end
 
 def interactive_menu
@@ -29,18 +39,18 @@ def interactive_menu
   end
 end
 
-def print_menu
-  puts "1. Input the students"
+def print_menu 
+  puts "1. Input new student"
   puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load saved students from students.csv"
+  puts "3. Save students to students.csv"
+  puts "4. Load students from students.csv"
   puts "9. Exit"
   print ">> "
 end
 
 def show_students
   print_header
-  print_students_list
+  print_students
   print_footer
 end
 
@@ -66,9 +76,9 @@ def print_header
   puts "------------------------------"
 end
 
-def print_students_list
-  @students.each do |student| 
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+def print_students
+  @students.each_with_index do |student, index|
+    puts "#{index + 1}) #{student[:name]} | #{student[:age]} years old | Location: #{student[:location]} |   (#{student[:cohort]} cohort)"
   end
 end
 
@@ -84,26 +94,24 @@ def print_footer
   puts "------------------------------\n\n"
 end
 
-def save_students
-  #open the file for writing
-  file = File.open("students.csv", "w")
-  # iterate over the array of students
+def save_students(filename = "students.csv")
+  file = File.open(filename, "w")
   @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
+    student_data = [student[:name], student[:age], student[:location], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "Save made to #{filename}"
   file.close
 end
 
 def load_students(filename = "students.csv")
-  # open the file for reading
   file = File.open(filename, "r")
   file.readlines.each do |line|
-    name, cohort = line.chomp.split(",") 
-    @students << {name: name, cohort: cohort.to_sym}
+	@name, @cohort, @age, @location = line.chomp.split(',')
+	add_student
   end
-  file.close
+  puts "Loaded #{@students.count} students from #{filename}"
 end
 
 def try_load_students
