@@ -7,6 +7,7 @@ puts "  ------------------------------------------------\n\n".center(100)
 def insert_student
   puts "Enter the name of the student: "
   puts "To finish, just hit return twice."
+  print ">> "
   # Get the first name.
   name = STDIN.gets.chomp
   # While the name is not empty, repeat this code.
@@ -16,6 +17,7 @@ def insert_student
     puts "Now we have #{@students.count} students"
     # Get another name from the user.
     puts "Enter Student's name or hit return to finish: "
+    print ">> "
     name = STDIN.gets.chomp
   end
 end
@@ -33,6 +35,7 @@ def print_menu
   puts "3. Save the list to students.csv"
   puts "4. Load saved students from students.csv"
   puts "9. Exit"
+  print ">> "
 end
 
 def show_students
@@ -60,7 +63,7 @@ end
 
 def print_header
   puts "The Students of Villains Academy"
-  puts "-------------"
+  puts "------------------------------"
 end
 
 def print_students_list
