@@ -1,5 +1,9 @@
 @students = [] # an empty array accessible to all methods
 
+puts "------------------------------------------------".center(100)
+puts "Welcome to the Villains Academy Student Database".center(100)
+puts "  ------------------------------------------------\n\n".center(100)
+
 def insert_student
   puts "Enter the name of the student: "
   puts "To finish, just hit return twice."
