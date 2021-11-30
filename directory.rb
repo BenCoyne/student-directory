@@ -73,7 +73,15 @@ def print_students_list
 end
 
 def print_footer
-  puts "Overall, we have #{@students.count} great students."
+  puts "------------------------------"
+  if @students.count == 0
+    puts "We currently have no students enrolled\n"
+  elsif @students.count == 1
+      puts "Overall, we have #{@students.count} great student\n"
+  else
+    puts "Overall, we have #{@students.count} great students\n"
+  end
+  puts "------------------------------\n\n"
 end
 
 def save_students
