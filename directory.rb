@@ -133,9 +133,9 @@ def sort_students
   puts "Sort students by: name, age, location or cohort" 
   print ">> "
   sorter = gets.chomp.to_sym
-    if sorter.empty?
-      sort_students
-    end
+  if sorter.empty?
+    sort_students
+  end
   students = @students.sort_by! { |student| student[sorter] }
 end
 
