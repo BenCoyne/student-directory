@@ -14,12 +14,12 @@ def insert_student
     @age = STDIN.gets.chomp.to_i
     puts "Enter student's location:"
     @location = STDIN.gets.chomp
-	  puts "Enter cohort:"
+    puts "Enter cohort:"
     @cohort = STDIN.gets.chomp
-	  if @cohort == ""
-		  @cohort = :December
-	end
-	add_student
+    if @cohort == ""
+      @cohort = :December
+    end
+  add_student
   puts "We now have #{@students.count} students."
   puts "Input the name of another student or hit Enter to finish "
   print ">> "
@@ -111,8 +111,8 @@ end
 def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
-	@name, @age, @location, @cohort, = line.chomp.split(',')
-	add_student
+    @name, @age, @location, @cohort, = line.chomp.split(',')
+    add_student
   end
   puts "Loaded #{@students.count} students from #{filename}"
 end
